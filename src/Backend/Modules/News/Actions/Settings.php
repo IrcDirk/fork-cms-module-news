@@ -83,7 +83,6 @@ class Settings extends BackendBaseActionEdit
             'allow_tags',
             $this->get('fork.settings')->get($this->getModule(), 'allow_tags', false)
         );
-
     }
 
     /**
@@ -103,7 +102,6 @@ class Settings extends BackendBaseActionEdit
     private function validateForm()
     {
         if ($this->frm->isSubmitted()) {
-
             if ($this->frm->isCorrect()) {
                 // set our settings
                 $this->get('fork.settings')->set($this->URL->getModule(), 'overview_number_of_items', (int) $this->frm->getField('overview_number_of_items')->getValue());

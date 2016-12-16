@@ -2,10 +2,8 @@
 
 namespace Frontend\Modules\News\Widgets;
 
-
 use Frontend\Core\Engine\Base\Widget as FrontendBaseWidget;
 use Frontend\Modules\News\Engine\Model as FrontendNewsModel;
-
 
 class NewsPost extends FrontendBaseWidget
 {
@@ -24,6 +22,8 @@ class NewsPost extends FrontendBaseWidget
      */
     private function parse()
     {
-        if(isset($this->data['id'])) $this->tpl->assign('widgetNewsNewsPost', FrontendNewsModel::getById($this->data['id']));
+        if (isset($this->data['id'])) {
+            $this->tpl->assign('widgetNewsNewsPost', FrontendNewsModel::getById($this->data['id']));
+        }
     }
 }

@@ -19,7 +19,6 @@ use Backend\Core\Engine\DataGridFunctions as BackendDataGridFunctions;
  */
 class Index extends ActionIndex
 {
-
     private $filter = [];
 
     /**
@@ -47,8 +46,7 @@ class Index extends ActionIndex
          FROM news AS i
          INNER JOIN news_post_content as c  on i.id = c.news_post_id';
 
-        if(isset($this->filter['categories'] ) && $this->filter['categories'] !== null && count($this->filter['categories']))
-        {
+        if (isset($this->filter['categories']) && $this->filter['categories'] !== null && count($this->filter['categories'])) {
             $query .= ' INNER JOIN news_linked_catgories AS cat ON i.id = cat.news_post_id';
         }
 
@@ -61,13 +59,12 @@ class Index extends ActionIndex
         $query .= ' AND i.status = ?';
         $parameters[] = 'active';
 
-        if($this->filter['value']){
+        if ($this->filter['value']) {
             $query .= ' AND c.name LIKE ?';
             $parameters[] = '%' . $this->filter['value'] . '%';
         }
 
-        if(isset($this->filter['categories'] ) && $this->filter['categories'] !== null && count($this->filter['categories']))
-        {
+        if (isset($this->filter['categories']) && $this->filter['categories'] !== null && count($this->filter['categories'])) {
             $query .= ' AND cat.category_id IN(' . implode(',', array_values($this->filter['categories'])) . ')';
         }
 
@@ -118,8 +115,7 @@ class Index extends ActionIndex
          FROM news AS i
          INNER JOIN news_post_content as c  on i.id = c.news_post_id';
 
-        if(isset($this->filter['categories'] ) && $this->filter['categories'] !== null && count($this->filter['categories']))
-        {
+        if (isset($this->filter['categories']) && $this->filter['categories'] !== null && count($this->filter['categories'])) {
             $query .= ' INNER JOIN news_linked_catgories AS cat ON i.id = cat.news_post_id';
         }
 
@@ -134,13 +130,12 @@ class Index extends ActionIndex
 
 
 
-        if($this->filter['value']){
+        if ($this->filter['value']) {
             $query .= ' AND c.name LIKE ?';
             $parameters[] = '%' . $this->filter['value'] . '%';
         }
 
-        if(isset($this->filter['categories'] ) && $this->filter['categories'] !== null && count($this->filter['categories']))
-        {
+        if (isset($this->filter['categories']) && $this->filter['categories'] !== null && count($this->filter['categories'])) {
             $query .= ' AND cat.category_id IN(' . implode(',', array_values($this->filter['categories'])) . ')';
         }
 
@@ -195,8 +190,7 @@ class Index extends ActionIndex
 
         $this->frm->addText('value', $this->filter['value']);
 
-        if(!empty($categories) && Authentication::isAllowedAction('AddCategory'))
-        {
+        if (!empty($categories) && Authentication::isAllowedAction('AddCategory')) {
             $this->frm->addMultiCheckbox(
                 'categories',
                 $categories,

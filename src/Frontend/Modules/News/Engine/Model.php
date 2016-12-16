@@ -14,49 +14,46 @@ use Frontend\Modules\News\Engine\Images as FrontendNewsImagesModel;
  */
 class Model
 {
-  /**
+    /**
     * Get the number of items
     *
     * @return int
     */
    public static function getAllCount($filter = array())
    {
-
-     $query =
+       $query =
             'SELECT COUNT(i.id) AS count
              FROM news AS i';
 
       // init parameters
       $parameters = array();
 
-      if(isset($filter['categories'] ) && $filter['categories'] !== null && count($filter['categories']))
-      {
-          $query .= ' INNER JOIN news_linked_catgories AS c ON i.id = c.news_post_id';
-      }
+       if (isset($filter['categories']) && $filter['categories'] !== null && count($filter['categories'])) {
+           $query .= ' INNER JOIN news_linked_catgories AS c ON i.id = c.news_post_id';
+       }
 
-      $query .= ' WHERE 1';
+       $query .= ' WHERE 1';
 
-      $query .= ' AND i.hidden = ?';
-      $parameters[] = 'N';
+       $query .= ' AND i.hidden = ?';
+       $parameters[] = 'N';
 
-      $query .= ' AND i.status = ?';
-      $parameters[] = 'active';
+       $query .= ' AND i.status = ?';
+       $parameters[] = 'active';
 
        $query .= ' AND i.publish_on <= ?';
-      $parameters[] = FrontendModel::getUTCDate('Y-m-d H:i') . ':00';
+       $parameters[] = FrontendModel::getUTCDate('Y-m-d H:i') . ':00';
 
-      if(isset($filter['categories'] ) && $filter['categories'] !== null && count($filter['categories']))
-      {
-          $query .= ' AND c.category_id IN(' . implode(',', array_values($filter['categories'])) . ')';
-      }
+       if (isset($filter['categories']) && $filter['categories'] !== null && count($filter['categories'])) {
+           $query .= ' AND c.category_id IN(' . implode(',', array_values($filter['categories'])) . ')';
+       }
 
       //$query .= ' GROUP BY i.id';
 
       return (int) FrontendModel::get('database')->getVar($query, $parameters);
    }
 
-   public static function get($URL)
-   {
+    public static function get($URL)
+    {
         $URL = (string) $URL;
         $item = (array) FrontendModel::getContainer()->get('database')->getRecord(
            'SELECT i.id, i.image, c.name, c.url, c.description,
@@ -80,15 +77,15 @@ class Model
 
        // init var
        $link = Navigation::getURLForBlock('News', 'Detail');
-       $item['full_url'] = $link . '/' . $item['url'];
-       $item['images'] = FrontendNewsImagesModel::getAll($item['id']);
+        $item['full_url'] = $link . '/' . $item['url'];
+        $item['images'] = FrontendNewsImagesModel::getAll($item['id']);
 
        // return
        return $item;
-   }
+    }
 
-   public static function getById($id)
-   {
+    public static function getById($id)
+    {
         $id = (int) $id;
         $item = (array) FrontendModel::getContainer()->get('database')->getRecord(
            'SELECT i.id, i.image, c.name, c.url, c.description,
@@ -112,17 +109,17 @@ class Model
 
        // init var
        $link = Navigation::getURLForBlock('News', 'Detail');
-       $item['full_url'] = $link . '/' . $item['url'];
-       $item['images'] = FrontendNewsImagesModel::getAll($item['id']);
+        $item['full_url'] = $link . '/' . $item['url'];
+        $item['images'] = FrontendNewsImagesModel::getAll($item['id']);
 
        // return
        return $item;
-   }
+    }
 
-   public static function getDraft($URL)
-   {
-      $URL = (string) $URL;
-       $item = (array) FrontendModel::getContainer()->get('database')->getRecord(
+    public static function getDraft($URL)
+    {
+        $URL = (string) $URL;
+        $item = (array) FrontendModel::getContainer()->get('database')->getRecord(
            'SELECT i.id, i.image, c.name, c.url, c.description
             FROM news AS i
             JOIN news_post_content AS c on c.news_post_id = i.id
@@ -139,12 +136,12 @@ class Model
 
        // init var
        $link = Navigation::getURLForBlock('News', 'Detail');
-       $item['full_url'] = $link . '/' . $item['url'];
-       $item['images'] = FrontendNewsImagesModel::getAll($item['id']);
+        $item['full_url'] = $link . '/' . $item['url'];
+        $item['images'] = FrontendNewsImagesModel::getAll($item['id']);
 
        // return
        return $item;
-   }
+    }
 
    /**
      * Get all items (at least a chunk)
@@ -155,17 +152,14 @@ class Model
      */
     public static function getAll($limit = 10, $offset = 0, $filter = array())
     {
-
-
-       $query = 'SELECT i.id, i.image, co.name, co.url, co.description
+        $query = 'SELECT i.id, i.image, co.name, co.url, co.description
              FROM news AS i
              JOIN news_post_content AS co on co.news_post_id = i.id';
 
         // init parameters
         $parameters = array();
 
-        if(isset($filter['categories'] ) && $filter['categories'] !== null && count($filter['categories']))
-        {
+        if (isset($filter['categories']) && $filter['categories'] !== null && count($filter['categories'])) {
             $query .= ' INNER JOIN news_linked_catgories AS c ON i.id = c.news_post_id';
         }
 
@@ -174,24 +168,21 @@ class Model
         $query .= ' AND i.hidden = ?';
         $parameters[] = 'N';
 
-          $query .= ' AND i.status = ?';
+        $query .= ' AND i.status = ?';
         $parameters[] = 'active';
 
         $query .= ' AND co.language = ?';
         $parameters[] = FRONTEND_LANGUAGE;
 
-         $query .= ' AND i.publish_on <= ?';
+        $query .= ' AND i.publish_on <= ?';
         $parameters[] = FrontendModel::getUTCDate('Y-m-d H:i') . ':00';
 
-        if(isset($filter['categories'] ) && $filter['categories'] !== null && count($filter['categories']))
-        {
+        if (isset($filter['categories']) && $filter['categories'] !== null && count($filter['categories'])) {
             $query .= ' AND c.category_id IN(' . implode(',', array_values($filter['categories'])) . ')';
         }
 
 
-         if(isset($filter['ignore_news'] ) && $filter['ignore_news'] !== null)
-        {
-
+        if (isset($filter['ignore_news']) && $filter['ignore_news'] !== null) {
             $query .= ' AND i.id NOT IN(' . implode(',', array_values($filter['ignore_news'])) . ')';
         }
 
@@ -211,7 +202,6 @@ class Model
 
         // prepare items for search
         foreach ($items as &$item) {
-
             $item['full_url'] =  $detailUrl . '/' . $item['url'];
         }
 
@@ -316,9 +306,9 @@ class Model
        if (empty($navigation['previous'])) {
            unset($navigation['previous']);
        }
-       if (empty($navigation['next'])) {
-           unset($navigation['next']);
-       }
+        if (empty($navigation['next'])) {
+            unset($navigation['next']);
+        }
 
         // return
         return $navigation;

@@ -75,7 +75,7 @@ class Model
              ) {
                  $URL = BackendModel::addNumber($URL);
 
-                 return self::getURL($URL,$language, $id);
+                 return self::getURL($URL, $language, $id);
              }
          }
 
@@ -94,8 +94,8 @@ class Model
         BackendModel::get('database')->delete('news_linked_catgories', 'news_post_id = ?', (int) $id);
 
         $images = (array) BackendNewsImagesModel::getAll((int) $id);
-        foreach($images as $image){
-            BackendModel::deleteThumbnails(FRONTEND_FILES_PATH . '/' . BackendModel::get('url')->getModule() . '/uploaded_images',  $image['filename']);
+        foreach ($images as $image) {
+            BackendModel::deleteThumbnails(FRONTEND_FILES_PATH . '/' . BackendModel::get('url')->getModule() . '/uploaded_images', $image['filename']);
         }
 
         BackendModel::get('database')->execute('DELETE c FROM news_post_images_content c INNER JOIN news_post_images i ON c.image_id = i.id WHERE i.news_post_id = ?', array((int) $id));
@@ -143,7 +143,6 @@ class Model
             array((int) $id), 'language');
 
         return  $return;
-
     }
 
 
@@ -166,10 +165,8 @@ class Model
 
     public static function insertContent(array $content)
     {
-        foreach($content as &$item){
-
-            if( BackendModel::get('fork.settings')->get('News', 'make_widget_per_news_post') == true)
-            {
+        foreach ($content as &$item) {
+            if (BackendModel::get('fork.settings')->get('News', 'make_widget_per_news_post') == true) {
                 $data = [
                     'id' => $item['news_post_id'],
                     'language' => $item['language'],
@@ -206,10 +203,8 @@ class Model
     public static function updateContent(array $content, $id)
     {
         $db = BackendModel::get('database');
-        foreach($content as $language => $row)
-        {
-            if( BackendModel::get('fork.settings')->get('News', 'make_widget_per_news_post') == true && $row['extra_id'])
-            {
+        foreach ($content as $language => $row) {
+            if (BackendModel::get('fork.settings')->get('News', 'make_widget_per_news_post') == true && $row['extra_id']) {
                 $data = [
                     'id' => $row['news_post_id'],
                     'language' => $row['language'],
