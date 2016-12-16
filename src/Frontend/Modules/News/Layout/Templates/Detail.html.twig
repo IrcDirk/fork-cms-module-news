@@ -1,0 +1,31 @@
+<h1>{{ item.name }}</h1>
+
+{{ item.description|raw }}
+
+{# image #}
+{% if item.images %}
+
+	{% for image in item.images %}
+
+	<p>
+		<a href="{{ FRONTEND_FILES_URL }}/News/images/1600x/{{ image.filename }}"><img src="{{ FRONTEND_FILES_URL }}/News/images/400x/{{ image.filename }}" alt="{{ item.name }}" /></a>
+	</p>
+
+	{% endfor %}
+
+{% endif %}
+
+{# navigation #}
+{% if navigation %}
+	<nav class="pagination pager">
+	    <ul>
+	        <li class="prev">
+	        	{% if navigation.previous %}<a href="{{ navigation.previous.url }}" rel="prev">{{ 'lbl.Previous'|trans|ucfirst }}: {{ navigation.previous.name }}</a>{% endif %}
+	        </li>
+
+	        <li class="next">
+	        	{% if navigation.next %}<a href="{{ navigation.next.url }}" rel="next">{{ 'lbl.Next'|trans|ucfirst }}: {{ navigation.next.name }}</a>{% endif %}
+	        </li>
+	    </ul>
+	</nav>
+{% endif %}

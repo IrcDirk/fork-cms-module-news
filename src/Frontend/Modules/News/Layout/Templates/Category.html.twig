@@ -1,0 +1,85 @@
+<div class="news_post-category">
+	<div class="news_post-category-intro">
+		{$item.intro}
+	</div>
+
+	<div class="overview-filter">
+		{form:newsIndexForm}
+
+			<label for="resetFilter" class="reset {option:!searched}checked{/option:!searched}">
+				{$chkResetFilter}
+				<span>{$lblAll|ucfirst}</span>
+			</label>
+			
+			{iteration:categories}
+				<label for="{$categories.id}">
+					{$categories.chkCategories}
+					<span>{$categories.label}</span>
+				</label>
+			{/iteration:categories}
+
+		{/form:newsIndexForm}
+	</div>
+
+	{option:items}
+		<div class="news-grid">
+			{iteration:items}
+			<div class="news-grid-item-outer news-grid-size-{$items.size}">
+				<div class="news-grid-item " style="background-image:url({$FRONTEND_FILES_URL}/News/image/800x/{$items.image})">
+					<a href="{$items.full_url}" title="{$items.name}">
+						<div class="inner">
+							<div class="inner-text">
+								<h4><span class="line-big">{$items.name}</span></h4>
+								{option:items.sub}
+								<p>{$items.sub}</p>
+								{/option:items.sub}
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="mobile-title">
+					<h5>
+						<a href="{$items.full_url}" title="{$items.name}">
+							{$items.name}
+						</a>
+					</h5>
+				</div>
+
+			</div>
+			{/iteration:items}
+		</div>
+	{/option:items}
+</div>
+
+
+{option:widgetNewsCategories}
+	<div class="news-categories link-hover">
+		<div class="grid">
+			{iteration:widgetNewsCategories}
+			<div class="grid-item grid-item portable-one-half desk-one-quarter">
+				<h4><span class="line">{$widgetNewsCategories.name}</span></h4>
+				<div class="js-equal-heights">
+					{$widgetNewsCategories.description}
+				</div>
+				<p>
+					<a href="{$widgetNewsCategories.full_url}" title="{$widgetNewsCategories.name}">{$lblDiscoverMore|ucfirst}</a>
+				</p>
+			</div>
+			{/iteration:widgetNewsCategories}
+
+			<div class="grid-item grid-item portable-one-half desk-one-quarter title-red">
+				<h4><span class="line">{$lblLetsTalkTitle|ucfirst}</span></h4>
+				<div class="js-equal-heights">
+					{$msgLetsTalk}
+				</div>
+				<p>
+					<a href="/{$FRONTEND_LANGUAGE}/contact" title="{$lblContact|ucfirst}">{$lblContact|ucfirst} ></a>
+				</p>
+			</div>
+
+		</div>
+	</div>
+{/option:widgetNewsCategories}
+
+{include:Core/Layout/Templates/Pagination.tpl}

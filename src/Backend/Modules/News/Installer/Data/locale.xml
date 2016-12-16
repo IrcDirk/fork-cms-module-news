@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locale>
+  <Backend>
+    <News>
+      <item type="label" name="AddImages">
+        <translation language="en"><![CDATA[add images]]></translation>
+        <translation language="nl"><![CDATA[voeg afbeeldingen toe]]></translation>
+      </item>
+      <item type="message" name="ConfirmDeleteItem">
+        <translation language="en"><![CDATA[Are your sure you want to delete this?]]></translation>
+        <translation language="nl"><![CDATA[Ben je zeker dat je het item wil verwijderen? ]]></translation>
+
+      </item>
+
+      <item type="label" name="AddNewsPost">
+        <translation language="en"><![CDATA[add news post]]></translation>
+        <translation language="nl"><![CDATA[voeg nieuws post toe]]></translation>
+      </item>
+
+      <item type="label" name="ParentCategory">
+        <translation language="en"><![CDATA[parent category]]></translation>
+        <translation language="nl"><![CDATA[ouder categorie]]></translation>
+      </item>
+      <item type="label" name="NewsPostDetail">
+        <translation language="en"><![CDATA[news_post detail]]></translation>
+        <translation language="nl"><![CDATA[news_post detail]]></translation>
+      </item>
+      <item type="label" name="News">
+        <translation language="en"><![CDATA[news]]></translation>
+        <translation language="nl"><![CDATA[nieuws]]></translation>
+      </item>
+      <item type="label" name="PublishedNews">
+        <translation language="en"><![CDATA[published news]]></translation>
+        <translation language="nl"><![CDATA[gepubliceerde nieuws berichten]]></translation>
+      </item>
+      <item type="label" name="SelectImages">
+        <translation language="en"><![CDATA[select images]]></translation>
+        <translation language="nl"><![CDATA[selecteer afbeeldingen]]></translation>
+      </item>
+      <item type="label" name="ShowSubcategories">
+        <translation language="en"><![CDATA[show subcategories]]></translation>
+        <translation language="nl"><![CDATA[ton subcategorieen]]></translation>
+      </item>
+      <item type="label" name="Upload">
+        <translation language="en"><![CDATA[upload]]></translation>
+        <translation language="nl"><![CDATA[upload]]></translation>
+      </item>
+      <item type="label" name="Select">
+        <translation language="en"><![CDATA[select]]></translation>
+        <translation language="nl"><![CDATA[selecteer]]></translation>
+      </item>
+      <item type="label" name="Social">
+        <translation language="en"><![CDATA[social]]></translation>
+        <translation language="nl"><![CDATA[sociaal]]></translation>
+      </item>
+
+      <item type="message" name="YouCanAddImagesAfterSaving">
+        <translation language="en"><![CDATA[After saving you can add images.]]></translation>
+        <translation language="nl"><![CDATA[Na het opslagen kan je afbeeldingen toevoegen.]]></translation>
+      </item>
+      <item type="message" name="AllowSubcategories">
+        <translation language="en"><![CDATA[Allow subcategories.]]></translation>
+        <translation language="nl"><![CDATA[Sta subcategorieen toe.]]></translation>
+      </item>
+      <item type="message" name="AllowTags">
+        <translation language="en"><![CDATA[Allow tags.]]></translation>
+        <translation language="nl"><![CDATA[Sta tags toe.]]></translation>
+      </item>
+      <item type="message" name="UseImageAsOgImage">
+        <translation language="en"><![CDATA[Use the cover image as og:image]]></translation>
+        <translation language="nl"><![CDATA[Gebruik de cover afbeelding als og:image]]></translation>
+      </item>
+      <item type="message" name="MakeWidgetPerNewsPost">
+        <translation language="en"><![CDATA[Create widget per news_post.]]></translation>
+        <translation language="nl"><![CDATA[Maak een widget aan per news_post.]]></translation>
+      </item>
+      <item type="message" name="MakeWidgetPerCategory">
+        <translation language="en"><![CDATA[Create widget per category.]]></translation>
+        <translation language="nl"><![CDATA[Maak een widget aan per categorie.]]></translation>
+      </item>
+      <item type="label" name="RecentNews">
+        <translation language="nl"><![CDATA[recent nieuws]]></translation>
+        <translation language="en"><![CDATA[recent news]]></translation>
+      </item>
+    </News>
+    <Core>
+
+      <item type="label" name="News">
+        <translation language="nl"><![CDATA[news]]></translation>
+        <translation language="en"><![CDATA[news]]></translation>
+      </item>
+      <item type="label" name="NewsPostDetail">
+        <translation language="nl"><![CDATA[nieuws detail]]></translation>
+        <translation language="en"><![CDATA[nieuws detail]]></translation>
+      </item>
+
+    </Core>
+  </Backend>
+
+  <Frontend>
+    <Core>
+        <item type="label" name="ReadMore">
+            <translation language="nl"><![CDATA[lees meer]]></translation>
+            <translation language="en"><![CDATA[read more]]></translation>
+        </item>
+    </Core>
+</Frontend>
+</locale>
